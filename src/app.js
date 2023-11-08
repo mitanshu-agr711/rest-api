@@ -2,7 +2,16 @@ const express = require('express');
 require("./db/conn");
 //for data connection
 const Student=require("./modl/student");
+const {  
+    isRequestValidated,
+    validateSignUpRequest,
+    validateSignIpRequest,
+  } = require("./auth/validator");
+const authRouter = require("./auth/auth");
+
 const app = express();
+app.use("/api", authRouter);
+
 const port = process.env.PORT || 8000;
 app.use(express.json());
 app.post('/student', (req, res) => {
@@ -20,7 +29,7 @@ app.post('/student', (req, res) => {
 // registration
 app.post('/auth/register',(req, res)=> {
     console.log("Register",req.body);
-    
+
     res.send("HIHIHIIHI");
 })
 
