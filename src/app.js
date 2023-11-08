@@ -17,7 +17,12 @@ app.post('/student', (req, res) => {
     });
 });
 
-
+// registration
+app.post('/auth/register',(req, res)=> {
+    console.log("Register",req.body);
+    
+    res.send("HIHIHIIHI");
+})
 
 app.listen(port, () => {
     console.log(`Connection established on port ${port}`);
