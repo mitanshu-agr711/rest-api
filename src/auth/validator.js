@@ -26,6 +26,7 @@ const isRequestValidated = (req, res, next) => {
   }
   next();
 };
+
 module.exports = {
   validateSignUpRequest,
   isRequestValidated,

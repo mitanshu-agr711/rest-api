@@ -2,11 +2,6 @@ const express = require('express');
 require("./db/conn");
 //for data connection
 const Student=require("./modl/student");
-const {  
-    isRequestValidated,
-    validateSignUpRequest,
-    validateSignIpRequest,
-  } = require("./auth/validator");
 const authRouter = require("./auth/auth");
 
 const app = express();
@@ -19,7 +14,7 @@ app.post('/student', (req, res) => {
     const user=new Student(req.body);
     user.save()
     .then(() => {
-        res.status(201).send("Student created successfully");
+        res.status(201).send("Student created successfully"  );
     })
     .catch(error => {
         res.status(400).send(`Error creating student: ${error}`);
@@ -36,3 +31,4 @@ app.post('/auth/register',(req, res)=> {
 app.listen(port, () => {
     console.log(`Connection established on port ${port}`);
 });
+  
