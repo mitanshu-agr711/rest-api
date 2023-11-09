@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+const bcrypt = require('bcrypt');
+
 const userSchema = new mongoose.Schema({
   username: {
      type: String,
@@ -16,7 +17,7 @@ const userSchema = new mongoose.Schema({
      unique: true,
      lowercase: true,
   },
-  hash_password: {
+  password: {
      type: String,
      require: true,
   },
@@ -26,9 +27,6 @@ const userSchema = new mongoose.Schema({
 // userSchema.virtual("name").get(function() {
 //    return `${this.firstName} ${this.lastName}`;
 //  });
-// userSchema.method({
-//   async authenticate(password) {
-//      return bcrypt.compare(password, this.hash_password);
-//   },
-// });
-// module.exports = mongoose.model("User", userSchema);
+
+// Create a user model
+module.exports = mongoose.model("User", userSchema);
