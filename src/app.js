@@ -24,11 +24,11 @@ const port = 3000;
 
 
 
-const secretKey = 'Mitanshu'; // Replace with a secure secret key
+const secretKey = 'Mitanshu'; 
 
 app.use(bodyParser.json());
 
-// Endpoint for user signup
+
 app.post('/signup', async (req, res) => {
   const { username, email, password } = req.body;
 
@@ -50,18 +50,14 @@ app.post('/signup', async (req, res) => {
 
     
     await newUser.save();
-
-    //it generate the token jo hame info denge
     const token = jwt.sign({ userId: newUser._id }, secretKey, { expiresIn: '1h' });
 
-    // ye response bheje ga
     res.status(201).json({ message: 'User created successfully', token });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal server error' });
   }
 });
-
 
 app.post('/signin', async (req, res) => {
   const { email, password } = req.body;
